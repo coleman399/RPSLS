@@ -57,9 +57,9 @@ class RunGame:
             index2 = self.what_is_the_index(player2_input)
             gesture_two = Gestures(self.player2_name.gestures[index2])
 
-            result = gesture_one.result(gesture_one, gesture_two)
+            result = Gestures.result(gesture_one.gesture, gesture_two.gesture)
 
-            if result != "None":
+            if result == "None":
                 print(f'{self.player1_name.name} won this round!')
                 self.player1_name.wins += 1
             else:
