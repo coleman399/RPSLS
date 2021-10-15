@@ -50,6 +50,7 @@ class RunGame:
         while self.player1_name.wins != 2 and self.player2_name.wins != 2:
             self.list_choices()
             player1_input = input(f'{self.player1_name.name} Please enter a number for your gesture you want to select')
+            
             player2_input = input(f'{self.player2_name.name} Please enter a number for your gesture you want to select')
 
 
