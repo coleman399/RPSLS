@@ -2,6 +2,7 @@ from gestures import Gestures
 from human import Human
 from computer import Computer
 import random
+import sys
 
 
 
@@ -9,6 +10,7 @@ class RunGame:
     def __init__(self):
         self.player1_name = Human("Wes")
         self.player2_name = Human('Dillon')
+
 
     def run_game(self):
         self.display_welcome()
@@ -50,22 +52,30 @@ class RunGame:
     def player_vs_player(self):
         while self.player1_name.wins != 2 and self.player2_name.wins != 2:
             self.list_choices()
-            player1_input = input(f'{self.player1_name.name} Please enter a number for your gesture you want to select')
+            player1_input = input(f'{self.player1_name.name} Please enter a number for your gesture you want to select: ')
             index1 = self.what_is_the_index(player1_input)
             gesture_one = Gestures(self.player1_name.gestures[index1])
-            player2_input = input(f'{self.player2_name.name} Please enter a number for your gesture you want to select')
+            player2_input = input(f'{self.player2_name.name} Please enter a number for your gesture you want to select: ')
             index2 = self.what_is_the_index(player2_input)
             gesture_two = Gestures(self.player2_name.gestures[index2])
-
-            result = Gestures.result(gesture_one.gesture, gesture_two.gesture)
-
-            if result == "None":
-                print(f'{self.player1_name.name} won this round!')
-                self.player1_name.wins += 1
+            if gesture_one.gesture is gesture_two.gesture:
+                print("Draw! Try Again!")
+                self.player_vs_player()
             else:
-                print(f'{self.player2_name.name} won this round!')
-                self.player2_name.wins += 1
-
+                results = gesture_one.results(gesture_two.gesture)
+                if results == "None":
+                    print(f'{self.player1_name.name} won this round!')
+                    self.player1_name.wins += 1
+                else:
+                    print(f'{self.player2_name.name} won this round!')
+                    self.player2_name.wins += 1
+                        
+        if self.player1_name.wins > self.player2_name.wins:
+            print(f"{self.player1_name.name} Wins!")
+            sys.exit()
+        else:
+            print(f"{self.player2_name.name} Wins!")
+            sys.exit()
 
     def player_vs_ai(self):
         pass

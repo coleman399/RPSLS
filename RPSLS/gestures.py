@@ -18,10 +18,8 @@ class Gestures:
             self.defeats.update({'scissors': "beats"})
             self.defeats.update({'rock': "beats"})
 
-    def result(self, player_one_choice, player_two_choice):
-        if player_one_choice in self.defeats:
-            return 0
-        elif player_two_choice in self.defeats:
-            return 1
+    def results(self, player_two_choice):
+        if player_two_choice in self.defeats:
+            return 
         else:
             return "None"
