@@ -1,0 +1,22 @@
+**Rock Paper Scissors Lizard Spock**
+
+Game Rules:
+
+How do we play a "best of three" game?
+1. Welcome
+2. Display the rules (how to play)
+3. Info about game format (best of 3)
+4. Choose game mode (PvP or PvE)
+5. Ask for player names
+6. P1 selects their gesture
+7. P2 selects their gesture
+8. Compare our two gestures
+    -Same thing? No points!
+    -P1 is winner
+    -P2 is winner
+9. Declare winner and give them 1 point
+10. Check scores to see if someone has 2 pts (best 2/3)
+11. If no winner, loop back to step 6 and go again!
+12. If there is a winner, congrats!
+
+What classes would we need for this?
