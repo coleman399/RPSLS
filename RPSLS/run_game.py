@@ -1,3 +1,4 @@
+from RPSLS.gestures import Gestures
 from human import Human
 from computer import Computer
 import random
@@ -43,15 +44,23 @@ class RunGame:
             return self.choose_game_mode()
 
     def list_choices(self):
-        for item1, item2 in zip(self.player_name1.gesture_number, self.player1_name.gestures):
+        for item1, item2 in zip(self.player1_name.gesture_number, self.player1_name.gestures):
             print(f'{item1}: {item2} ')
 
     def player_vs_player(self):
         while self.player1_name.wins != 2 and self.player2_name.wins != 2:
             self.list_choices()
             player1_input = input(f'{self.player1_name.name} Please enter a number for your gesture you want to select')
-            
+            gesture_one = Gestures(player1_input)
             player2_input = input(f'{self.player2_name.name} Please enter a number for your gesture you want to select')
+            gesture_two = Gestures(player2_input)
+
+            result = gesture_one.result(gesture_one, gesture_two)
+
+            if result != "None":
+                self.player1_name.wins += 1
+            else:
+                self.player2_name.wins += 1
 
 
     def player_vs_ai(self):
