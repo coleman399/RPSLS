@@ -1,4 +1,4 @@
-from RPSLS.gestures import Gestures
+from gestures import Gestures
 from human import Human
 from computer import Computer
 import random
