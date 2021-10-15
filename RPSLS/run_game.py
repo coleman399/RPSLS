@@ -1,4 +1,4 @@
-from RPSLS.gestures import Gestures
+from gestures import Gestures
 from human import Human
 from computer import Computer
 import random
@@ -21,7 +21,7 @@ class RunGame:
 
 
     def display_welcome(self):
-        print(f'Welcome {self.player1_name} and {self.player2_name} \nto Rock Paper Sissiors Lizard Spock! ')
+        print(f'Welcome {self.player1_name.name} and {self.player2_name.name} \nto Rock Paper Sissiors Lizard Spock! ')
 
     def display_rules(self):
         print(f'\nSo these are the rules of the game!')
@@ -51,19 +51,33 @@ class RunGame:
         while self.player1_name.wins != 2 and self.player2_name.wins != 2:
             self.list_choices()
             player1_input = input(f'{self.player1_name.name} Please enter a number for your gesture you want to select')
-            gesture_one = Gestures(player1_input)
+            index1 = self.what_is_the_index(player1_input)
+            gesture_one = Gestures(self.player1_name.gestures[index1])
             player2_input = input(f'{self.player2_name.name} Please enter a number for your gesture you want to select')
-            gesture_two = Gestures(player2_input)
+            index2 = self.what_is_the_index(player2_input)
+            gesture_two = Gestures(self.player2_name.gestures[index2])
 
             result = gesture_one.result(gesture_one, gesture_two)
 
             if result != "None":
+                print(f'{self.player1_name.name} won this round!')
                 self.player1_name.wins += 1
             else:
+                print(f'{self.player2_name.name} won this round!')
                 self.player2_name.wins += 1
 
 
     def player_vs_ai(self):
         pass
 
-    
+    def what_is_the_index(self, playerinput):
+        if playerinput == '1':
+            return int(0)
+        elif playerinput == '2':
+            return int(1)
+        elif playerinput == '3':
+            return int(2)
+        elif playerinput == '4':
+            return int(3)
+        elif playerinput == '5':
+            return int(4)
