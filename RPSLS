@@ -20,3 +20,8 @@ How do we play a "best of three" game?
 12. If there is a winner, congrats!
 
 What classes would we need for this?
+
+Player
+    Human
+    Computer
+Battlefield (game logic here)
