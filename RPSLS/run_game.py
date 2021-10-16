@@ -2,6 +2,7 @@ from gestures import Gestures
 from human import Human
 from computer import Computer
 import random
+import sys
 
 class RunGame:
     def __init__(self):
@@ -57,7 +58,7 @@ class RunGame:
             index2 = self.what_is_the_index(player2_input)
             gesture_two = Gestures(self.player2.gestures[index2])
             if gesture_one.gesture == gesture_two.gesture:
-                print("Draw! Try Again!")
+                print("\nDraw! Try Again!\n")
                 self.player_vs_player()
             else:
                 results = gesture_one.results(gesture_two.gesture)
@@ -69,10 +70,10 @@ class RunGame:
                     self.player2.wins += 1                  
         if self.player1.wins > self.player2.wins:
             print(f"{self.player1.name} Wins!\n")
-            self.end_game(0)
+            self.end_game()
         else:
             print(f"{self.player2.name} Wins!\n")
-            self.end_game(0)
+            self.end_game()
 
     def player_vs_ai(self):
         while self.player1.wins != 2 and self.computer.wins != 2:
@@ -84,7 +85,7 @@ class RunGame:
             index2 = self.what_is_the_index(computer_input)
             gesture_two = Gestures(self.computer.gestures[index2])
             if gesture_one.gesture == gesture_two.gesture:
-                print("Draw! Try Again!")
+                print("\nDraw! Try Again!\n")
                 self.player_vs_ai()
             else:
                 results = gesture_one.results(gesture_two.gesture)
@@ -96,10 +97,10 @@ class RunGame:
                     self.computer.wins += 1
         if self.player1.wins > self.computer.wins:
             print(f"{self.player1.name} Wins!\n")
-            self.end_game(0)
+            self.end_game()
         else:
             print(f"{self.computer.name} Wins!\n")
-            self.end_game(0) 
+            self.end_game() 
 
     def what_is_the_index(self, playerinput):
         if playerinput == '1':
@@ -113,18 +114,17 @@ class RunGame:
         elif playerinput == '5':
             return int(4)
 
-    def end_game(self, reset_code):
-        loop = True
-        if reset_code == 0:
-            self.player1.wins = 0
-            self.player2.wins = 0
-            self.computer.wins = 0
-        while loop is True:
+    def end_game(self):
+        self.player1.wins = 0
+        self.player2.wins = 0
+        self.computer.wins = 0
+        while True:
             user_input = input("Would you like to play again(y/n)? ")
             if user_input == 'y':
                 self.run_game()
             elif user_input == 'n':
                 print("Thank you for playing.")
-                loop = False
+                sys.exit()
             else:
-                print("please use the 'y' and 'n' keys to make a selection."
+                print("please use the 'y' and 'n' keys to make a selection.")
+                self.end_game()
