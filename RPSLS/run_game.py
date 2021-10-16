@@ -62,7 +62,7 @@ class RunGame:
                 self.player_vs_player()
             else:
                 results = gesture_one.results(gesture_two.gesture)
-                if results == "None":
+                if results == 0:
                     print(f'\n{self.player1.name} won this round!\n')
                     self.player1.wins += 1
                 else:
