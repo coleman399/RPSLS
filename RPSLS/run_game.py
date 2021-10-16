@@ -123,7 +123,7 @@ class RunGame:
             if user_input == 'y':
                 self.run_game()
             elif user_input == 'n':
-                print("Thank you for playing.")
+                print("\n--- Thank you for playing. ---\n")
                 sys.exit()
             else:
                 print("please use the 'y' and 'n' keys to make a selection.")
