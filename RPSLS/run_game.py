@@ -32,17 +32,18 @@ class RunGame:
         print(f'\n--- This is a best 2 out of 3 game! ---\n')
 
     def choose_game_mode(self):
-        try:
+        user_input = ''
+        while user_input != "1" or user_input != '2':
             user_input = input(f'Please select your game mode:\nEnter 1 for Player VS Player.\nEnter 2 for Player VS AI.\nSelection: ')
             if user_input == '1':
-                print("\n--- PVP GAME ---")
+                print("\n--- PVP GAME ---\n")
                 return True
             elif user_input == '2':
-                print("\n--- PVE GAME ---")
+                print("\n--- PVE GAME ---\n")
                 return False
-        except:
-            print(f'Please enter one of the valid inputs')
-            return self.choose_game_mode()
+            else:
+                print(f'Please enter one of the valid inputs')
+                return self.choose_game_mode()
 
     def list_choices(self):
         for item1, item2 in zip(self.player1.gesture_number, self.player1.gestures):
