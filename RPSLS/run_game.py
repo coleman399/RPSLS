@@ -51,10 +51,24 @@ class RunGame:
     def player_vs_player(self):
         while self.player1.wins != 2 and self.player2.wins != 2:
             self.list_choices()
-            player1_input = input(f'\n{self.player1.name} - Please enter a number for your gesture you want to select: ')
+            verify = False
+            while verify == False:
+                player1_input = input(f'\n{self.player1.name} - Please enter a number for your gesture you want to select: ')
+                if player1_input == "1" or player1_input == "2" or player1_input == "3" or player1_input == "4" or player1_input == "5":
+                    verify = True
+                else:
+                    print(f'{self.player1.name} Please enter a valid number from the listed options!\n')
+                    self.list_choices()
             index1 = self.what_is_the_index(player1_input)
             gesture_one = Gestures(self.player1.gestures[index1])
-            player2_input = input(f'{self.player2.name} - Please enter a number for your gesture you want to select: ')
+            verify2 = False
+            while verify2 == False:
+                player2_input = input(f'\n{self.player1.name} - Please enter a number for your gesture you want to select: ')
+                if player2_input == "1" or player2_input == "2" or player2_input == "3" or player2_input == "4" or player2_input == "5":
+                    verify2 = True
+                else:
+                    print(f'{self.player2.name} Please enter a valid number from the listed options!')
+                    self.list_choices()
             index2 = self.what_is_the_index(player2_input)
             gesture_two = Gestures(self.player2.gestures[index2])
             if gesture_one.gesture == gesture_two.gesture:
@@ -78,7 +92,14 @@ class RunGame:
     def player_vs_ai(self):
         while self.player1.wins != 2 and self.computer.wins != 2:
             self.list_choices()
-            player1_input = input(f'\n{self.player1.name} - Please enter a number for your gesture you want to select: ')
+            verify = False
+            while verify == False:
+                player1_input = input(f'\n{self.player1.name} - Please enter a number for your gesture you want to select: ')
+                if player1_input == "1" or player1_input == "2" or player1_input == "3" or player1_input == "4" or player1_input == "5":
+                    verify = True
+                else:
+                    print(f'{self.player1.name} Please enter a valid number from the listed options!')
+                    self.list_choices()
             index1 = self.what_is_the_index(player1_input)
             gesture_one = Gestures(self.player1.gestures[index1])
             computer_input = str(random.randrange(1, 5))
